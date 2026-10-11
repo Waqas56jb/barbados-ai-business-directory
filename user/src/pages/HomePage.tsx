@@ -51,7 +51,7 @@ export function HomePage() {
 
   return (
     <div>
-      <section className="relative min-h-[88vh] overflow-hidden">
+      <section className="relative min-h-[70vh] overflow-hidden sm:min-h-[88vh]">
         <SafeImage
           src={heroContent.image}
           alt={heroContent.imageAlt}
@@ -59,10 +59,10 @@ export function HomePage() {
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ocean/85 via-ocean/55 to-ocean/25" />
-        <div className="container-shell section-padding relative flex min-h-[88vh] flex-col justify-center py-16">
+        <div className="container-shell section-padding relative flex min-h-[70vh] flex-col justify-center py-12 sm:min-h-[88vh] sm:py-16">
           <div className="max-w-3xl text-white">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-sand">Barbados Explorer</p>
-            <h1 className="font-display text-5xl font-semibold leading-tight text-balance sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-4xl font-semibold leading-tight text-balance sm:text-6xl lg:text-7xl">
               {heroContent.headline}
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-sand/95 sm:text-xl">{heroContent.supporting}</p>
@@ -169,7 +169,7 @@ export function HomePage() {
                 key={gem.id}
                 to={`/business/${gem.slug}`}
                 className={`group relative overflow-hidden rounded-[2rem] ${
-                  index === 0 ? 'lg:col-span-7 min-h-[360px]' : 'lg:col-span-5 min-h-[280px]'
+                  index === 0 ? 'min-h-[240px] lg:col-span-7 lg:min-h-[360px]' : 'min-h-[220px] lg:col-span-5 lg:min-h-[280px]'
                 }`}
               >
                 <SafeImage

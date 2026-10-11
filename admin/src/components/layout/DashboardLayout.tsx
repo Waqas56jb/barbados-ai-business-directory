@@ -23,13 +23,20 @@ export function DashboardLayout() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   if (!authenticated) return <Navigate to="/login" replace />
 
   const allowed = canAccessPath(role, location.pathname)
 
   return (
     <div
-      className={`min-h-screen bg-ivory lg:grid ${collapsed ? 'lg:grid-cols-[88px_1fr]' : 'lg:grid-cols-[280px_1fr]'}`}
+      className={`min-h-screen overflow-x-clip bg-ivory lg:grid ${collapsed ? 'lg:grid-cols-[88px_1fr]' : 'lg:grid-cols-[280px_1fr]'}`}
     >
       <aside className="hidden bg-ocean lg:sticky lg:top-0 lg:block lg:h-screen">
         <Sidebar collapsed={collapsed} />
@@ -43,7 +50,7 @@ export function DashboardLayout() {
             aria-label="Close menu"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute inset-y-0 left-0 w-[min(300px,85vw)] bg-ocean shadow-soft">
+          <div className="absolute inset-y-0 left-0 w-[min(300px,85vw)] overflow-y-auto overscroll-contain bg-ocean shadow-soft">
             <Sidebar onNavigate={() => setMobileOpen(false)} />
           </div>
         </div>
@@ -51,7 +58,7 @@ export function DashboardLayout() {
 
       <div className="min-w-0">
         <TopHeader onMenuOpen={() => setMobileOpen(true)} />
-        <main className="px-4 py-6 lg:px-8 lg:py-8">
+        <main className="px-3 py-5 sm:px-4 sm:py-6 lg:px-8 lg:py-8">
           {allowed ? <Outlet /> : <PermissionDenied />}
         </main>
       </div>

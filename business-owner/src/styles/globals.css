@@ -38,7 +38,7 @@
   }
 
   body {
-    @apply m-0 min-h-screen bg-ivory font-sans text-ink antialiased;
+    @apply m-0 min-h-screen overflow-x-clip bg-ivory font-sans text-ink antialiased;
   }
 
   #root {

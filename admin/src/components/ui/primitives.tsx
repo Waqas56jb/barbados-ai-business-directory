@@ -101,12 +101,12 @@ export function CardHeader({
   action?: ReactNode
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4">
-      <div>
+    <div className="flex flex-col gap-3 border-b border-border px-4 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:px-5">
+      <div className="min-w-0">
         <h2 className="font-display text-xl text-ocean">{title}</h2>
         {description ? <p className="mt-1 text-sm text-muted">{description}</p> : null}
       </div>
-      {action}
+      {action ? <div className="w-full shrink-0 sm:w-auto">{action}</div> : null}
     </div>
   )
 }
@@ -164,7 +164,7 @@ export function PageHeader({
 }) {
   return (
     <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-      <div>
+      <div className="min-w-0">
         {breadcrumbs?.length ? (
           <nav aria-label="Breadcrumb" className="mb-2">
             <ol className="flex flex-wrap items-center gap-1 text-xs text-muted">
@@ -177,10 +177,10 @@ export function PageHeader({
             </ol>
           </nav>
         ) : null}
-        <h1 className="font-display text-3xl text-ocean sm:text-4xl">{title}</h1>
+        <h1 className="font-display text-2xl break-words text-ocean sm:text-3xl lg:text-4xl">{title}</h1>
         {description ? <p className="mt-2 max-w-3xl text-sm text-muted">{description}</p> : null}
       </div>
-      {actions ? <div className="flex flex-wrap gap-2">{actions}</div> : null}
+      {actions ? <div className="flex w-full flex-wrap gap-2 sm:w-auto [&_a]:max-sm:flex-1 [&_button]:max-sm:flex-1">{actions}</div> : null}
     </div>
   )
 }
@@ -231,17 +231,21 @@ export function Modal({
 
   if (!open) return null
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true">
       <button type="button" className="absolute inset-0 bg-ocean/40" aria-label="Close dialog" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-soft">
+      <div className="relative z-10 max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white shadow-soft sm:rounded-2xl">
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
-          <h2 className="font-display text-xl text-ocean">{title}</h2>
-          <button type="button" className="rounded-lg p-2 hover:bg-sand" aria-label="Close" onClick={onClose}>
+          <h2 className="min-w-0 pr-2 font-display text-xl text-ocean">{title}</h2>
+          <button type="button" className="shrink-0 rounded-lg p-2 hover:bg-sand" aria-label="Close" onClick={onClose}>
             <X className="h-4 w-4" />
           </button>
         </div>
         <div className="px-5 py-4 text-sm">{children}</div>
-        {footer ? <div className="flex justify-end gap-2 border-t border-border px-5 py-4">{footer}</div> : null}
+        {footer ? (
+          <div className="flex flex-wrap justify-end gap-2 border-t border-border px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+            {footer}
+          </div>
+        ) : null}
       </div>
     </div>
   )

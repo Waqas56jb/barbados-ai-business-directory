@@ -33,12 +33,15 @@ export function Header() {
           scrolled ? 'border-b border-ocean/10 bg-ivory/95 shadow-sm backdrop-blur' : 'bg-ivory/80 backdrop-blur-sm'
         }`}
       >
-        <div className="container-shell section-padding flex h-16 items-center justify-between gap-4 lg:h-20">
-          <Link to="/" className="shrink-0 font-display text-xl font-semibold text-ocean sm:text-2xl">
+        <div className="container-shell section-padding flex h-16 items-center justify-between gap-3 sm:gap-4 lg:h-20">
+          <Link
+            to="/"
+            className="min-w-0 max-w-[48vw] truncate font-display text-xl font-semibold text-ocean sm:max-w-none sm:text-2xl"
+          >
             {siteConfig.brandName}
           </Link>
 
-          <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {navigation.map((item) => (
               <NavLink
                 key={item.href}
@@ -55,7 +58,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               aria-label="Open directory search"
@@ -74,13 +77,13 @@ export function Header() {
             </Button>
             <Link
               to="/list-your-business"
-              className="hidden rounded-full px-3 py-2 text-sm font-medium text-ocean hover:bg-sand lg:inline-flex"
+              className="hidden rounded-full px-3 py-2 text-sm font-medium text-ocean hover:bg-sand xl:inline-flex"
             >
               List Your Business
             </Link>
             <button
               type="button"
-              className="inline-flex rounded-full p-2 text-ocean hover:bg-sand xl:hidden"
+              className="inline-flex rounded-full p-2 text-ocean hover:bg-sand lg:hidden"
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen(true)}

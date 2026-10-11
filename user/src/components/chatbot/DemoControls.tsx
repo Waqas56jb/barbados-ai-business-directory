@@ -16,9 +16,9 @@ export function DemoControls() {
   )
 
   return (
-    <div className="fixed bottom-5 left-5 z-40 sm:bottom-8 sm:left-8">
+    <div className="fixed left-5 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] z-40 sm:bottom-8 sm:left-8">
       {open ? (
-        <div className="w-[min(360px,calc(100vw-2.5rem))] rounded-3xl border border-coral/40 bg-white p-4 shadow-soft">
+        <div className="mb-2 w-[min(360px,calc(100vw-2.5rem))] rounded-3xl border border-coral/40 bg-white p-4 shadow-soft">
           <div className="mb-3 flex items-start justify-between gap-3">
             <div>
               <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-coral">

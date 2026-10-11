@@ -31,17 +31,17 @@ export function Modal({
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={title}>
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-label={title}>
       <button type="button" className="absolute inset-0 bg-ocean/40" aria-label="Close dialog" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-soft">
+      <div className="relative z-10 max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white shadow-soft sm:rounded-2xl">
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
-          <h2 className="font-display text-xl text-ocean">{title}</h2>
-          <button type="button" className="rounded-lg p-2 hover:bg-sand" aria-label="Close" onClick={onClose}>
+          <h2 className="min-w-0 pr-2 font-display text-xl text-ocean">{title}</h2>
+          <button type="button" className="shrink-0 rounded-lg p-2 hover:bg-sand" aria-label="Close" onClick={onClose}>
             <X className="h-4 w-4" />
           </button>
         </div>
         <div className="px-5 py-4 text-sm text-ink">{children}</div>
-        {footer ? <div className="flex justify-end gap-2 border-t border-border px-5 py-4">{footer}</div> : null}
+        {footer ? <div className="flex flex-wrap justify-end gap-2 border-t border-border px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">{footer}</div> : null}
       </div>
     </div>
   )
@@ -71,11 +71,12 @@ export function ConfirmDialog({
       onClose={onClose}
       footer={
         <>
-          <Button variant="ghost" onClick={onClose}>
+          <Button variant="ghost" className="w-full sm:w-auto" onClick={onClose}>
             Cancel
           </Button>
           <Button
             variant={danger ? 'danger' : 'primary'}
+            className="w-full sm:w-auto"
             onClick={() => {
               onConfirm()
               onClose()

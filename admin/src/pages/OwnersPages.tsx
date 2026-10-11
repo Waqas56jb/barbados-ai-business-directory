@@ -152,10 +152,10 @@ export function OwnersListPage() {
               </Card>
             ))}
           </div>
-          <div className="mt-4 flex items-center justify-between">
-            <Button variant="outline" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>Previous</Button>
-            <p className="text-sm text-muted">Page {page} of {pages}</p>
-            <Button variant="outline" disabled={page >= pages} onClick={() => setPage((p) => p + 1)}>Next</Button>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <Button variant="outline" className="w-full sm:w-auto" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>Previous</Button>
+            <p className="text-center text-sm text-muted">Page {page} of {pages}</p>
+            <Button variant="outline" className="w-full sm:w-auto" disabled={page >= pages} onClick={() => setPage((p) => p + 1)}>Next</Button>
           </div>
         </>
       )}

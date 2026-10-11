@@ -134,7 +134,7 @@ export function DashboardPage() {
 
       <Card className="mt-6">
         <CardHeader title="Recent activity" description="Fictional administrative events from the demo audit log." />
-        <div className="overflow-x-auto">
+        <div className="hidden overflow-x-auto md:block">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-sand/60 text-xs tracking-wide text-muted uppercase">
               <tr>
@@ -155,6 +155,16 @@ export function DashboardPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="space-y-3 p-4 md:hidden">
+          {(data?.auditLogs ?? []).map((log) => (
+            <div key={log.id} className="rounded-xl border border-border p-3 text-sm">
+              <p className="font-medium text-ocean">{log.summary}</p>
+              <p className="mt-1 text-xs text-muted">
+                {formatDateTime(log.createdAt)} · {log.actorName} · {log.action}
+              </p>
+            </div>
+          ))}
         </div>
       </Card>
     </div>

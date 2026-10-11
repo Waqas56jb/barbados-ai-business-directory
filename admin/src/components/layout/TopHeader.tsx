@@ -33,17 +33,17 @@ export function TopHeader({ onMenuOpen }: { onMenuOpen: () => void }) {
             </button>
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-ocean">{siteConfig.brandName}</p>
-              <p className="text-xs text-muted">Operational control for the tourism marketplace demo</p>
+              <p className="hidden truncate text-xs text-muted sm:block">Operational control for the tourism marketplace demo</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="hidden rounded-full bg-sand px-3 py-1 text-xs font-semibold text-ocean sm:inline-flex">
+          <div className="flex shrink-0 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
+            <span className="hidden rounded-full bg-sand px-3 py-1 text-xs font-semibold text-ocean md:inline-flex">
               {siteConfig.environmentLabel}
             </span>
             <button
               type="button"
-              className="inline-flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-sm hover:bg-sand"
+              className="inline-flex items-center gap-2 rounded-xl border border-border px-2.5 py-2 text-sm hover:bg-sand sm:px-3"
               onClick={() => setSearchOpen(true)}
             >
               <Search className="h-4 w-4" />
@@ -87,7 +87,7 @@ export function TopHeader({ onMenuOpen }: { onMenuOpen: () => void }) {
                 <span className="hidden max-w-[120px] truncate lg:inline">{admin?.name ?? 'Admin'}</span>
               </button>
               {profileOpen ? (
-                <div className="absolute right-0 mt-2 w-72 rounded-2xl border border-border bg-white p-3 shadow-soft">
+                <div className="absolute right-0 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-2xl border border-border bg-white p-3 shadow-soft">
                   <p className="text-sm font-semibold text-ocean">{admin?.name}</p>
                   <p className="text-xs text-muted">{admin?.email}</p>
                   <label className="mt-3 block text-xs font-semibold text-muted">

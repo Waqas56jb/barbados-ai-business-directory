@@ -72,40 +72,61 @@ export function KnowledgeListPage() {
       {filtered.length === 0 ? (
         <EmptyState title="No knowledge records match" />
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-border bg-white">
-          <table className="min-w-full text-left text-sm">
-            <thead className="bg-sand/60 text-xs tracking-wide text-muted uppercase">
-              <tr>
-                <th className="px-4 py-3">Source title</th>
-                <th className="px-4 py-3">Type</th>
-                <th className="px-4 py-3">Business</th>
-                <th className="px-4 py-3">Updated</th>
-                <th className="px-4 py-3">Indexing</th>
-                <th className="px-4 py-3">Visibility</th>
-                <th className="px-4 py-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((record) => (
-                <tr key={record.id} className="border-t border-border">
-                  <td className="px-4 py-3 font-medium">{record.title}</td>
-                  <td className="px-4 py-3">{statusLabel(record.sourceType)}</td>
-                  <td className="px-4 py-3">
-                    {record.businessId
-                      ? businesses.find((b) => b.id === record.businessId)?.name ?? record.businessId
-                      : '—'}
-                  </td>
-                  <td className="px-4 py-3">{formatDateTime(record.updatedAt)}</td>
-                  <td className="px-4 py-3"><StatusBadge status={record.demoIndexStatus} /></td>
-                  <td className="px-4 py-3"><StatusBadge status={record.visibility === 'public' ? 'published' : record.visibility} /></td>
-                  <td className="px-4 py-3">
-                    <Link to={`/knowledge/${record.id}`} className="text-turquoise hover:underline">Open</Link>
-                  </td>
+        <>
+          <div className="hidden overflow-x-auto rounded-2xl border border-border bg-white lg:block">
+            <table className="min-w-full text-left text-sm">
+              <thead className="bg-sand/60 text-xs tracking-wide text-muted uppercase">
+                <tr>
+                  <th className="px-4 py-3">Source title</th>
+                  <th className="px-4 py-3">Type</th>
+                  <th className="px-4 py-3">Business</th>
+                  <th className="px-4 py-3">Updated</th>
+                  <th className="px-4 py-3">Indexing</th>
+                  <th className="px-4 py-3">Visibility</th>
+                  <th className="px-4 py-3">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {filtered.map((record) => (
+                  <tr key={record.id} className="border-t border-border">
+                    <td className="px-4 py-3 font-medium">{record.title}</td>
+                    <td className="px-4 py-3">{statusLabel(record.sourceType)}</td>
+                    <td className="px-4 py-3">
+                      {record.businessId
+                        ? businesses.find((b) => b.id === record.businessId)?.name ?? record.businessId
+                        : '—'}
+                    </td>
+                    <td className="px-4 py-3">{formatDateTime(record.updatedAt)}</td>
+                    <td className="px-4 py-3"><StatusBadge status={record.demoIndexStatus} /></td>
+                    <td className="px-4 py-3"><StatusBadge status={record.visibility === 'public' ? 'published' : record.visibility} /></td>
+                    <td className="px-4 py-3">
+                      <Link to={`/knowledge/${record.id}`} className="text-turquoise hover:underline">Open</Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-3 lg:hidden">
+            {filtered.map((record) => (
+              <Card key={record.id} className="p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-medium text-ocean">{record.title}</p>
+                  <StatusBadge status={record.demoIndexStatus} />
+                </div>
+                <p className="mt-1 text-xs text-muted">
+                  {statusLabel(record.sourceType)} ·{' '}
+                  {record.businessId
+                    ? businesses.find((b) => b.id === record.businessId)?.name ?? record.businessId
+                    : 'No business'}
+                </p>
+                <Link to={`/knowledge/${record.id}`} className="mt-3 inline-block text-sm text-turquoise">
+                  Open record
+                </Link>
+              </Card>
+            ))}
+          </div>
+        </>
       )}
     </div>
   )

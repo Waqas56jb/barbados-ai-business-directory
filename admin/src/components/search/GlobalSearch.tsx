@@ -74,7 +74,7 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-ocean/40 p-4 pt-[12vh]" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-ocean/40 p-3 pt-4 sm:p-4 sm:pt-[12vh]" role="dialog" aria-modal="true">
       <button type="button" className="absolute inset-0" aria-label="Close search" onClick={onClose} />
       <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-soft">
         <div className="flex items-center gap-3 border-b border-border px-4 py-3">

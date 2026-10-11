@@ -59,7 +59,7 @@ export function ListingsPage() {
 
       <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
         <Card className="overflow-hidden">
-          <div className="overflow-x-auto">
+          <div className="hidden overflow-x-auto md:block">
             <table className="min-w-full text-left text-sm">
               <thead className="bg-sand/50 text-xs uppercase tracking-wide text-muted">
                 <tr>
@@ -88,6 +88,23 @@ export function ListingsPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="space-y-2 p-3 md:hidden">
+            {rows.map(({ listing, business }) => (
+              <button
+                key={listing.id}
+                type="button"
+                className={`w-full rounded-xl border border-border p-3 text-left ${selectedId === listing.id ? 'bg-sand/50' : 'bg-white'}`}
+                onClick={() => setSelectedId(listing.id)}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-medium text-ocean">{listing.title}</p>
+                  <StatusBadge status={listing.status} />
+                </div>
+                <p className="mt-1 text-xs text-muted">{business?.category} · {business?.locationLabel}</p>
+                <p className="mt-1 text-xs text-muted">{listing.completionScore}% · {formatDate(listing.lastUpdated)}</p>
+              </button>
+            ))}
           </div>
         </Card>
 

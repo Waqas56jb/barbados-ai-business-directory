@@ -75,7 +75,7 @@ export function ChatWidget() {
       <button
         type="button"
         onClick={() => openChat()}
-        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-turquoise px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-turquoise-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-turquoise sm:bottom-8 sm:right-8"
+        className="fixed right-5 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-40 inline-flex items-center gap-2 rounded-full bg-turquoise px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-turquoise-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-turquoise sm:right-8 sm:bottom-8"
         aria-label="Open Barbados AI Guide"
       >
         <MessageCircle className="h-5 w-5" />

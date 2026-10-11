@@ -92,14 +92,14 @@ export function BusinessEditPage() {
       />
 
       <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
-        <aside className="h-fit rounded-2xl border border-border bg-white p-3 shadow-card">
-          <nav className="space-y-1">
+        <aside className="h-fit rounded-2xl border border-border bg-white p-3 shadow-card lg:sticky lg:top-20">
+          <nav className="flex gap-2 overflow-x-auto pb-1 lg:block lg:space-y-1 lg:overflow-visible lg:pb-0">
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={() => setActiveSection(section.id)}
-                className={`block rounded-xl px-3 py-2 text-sm ${
+                className={`block whitespace-nowrap rounded-xl px-3 py-2 text-sm ${
                   activeSection === section.id ? 'bg-sand text-ocean' : 'text-muted hover:bg-sand/50'
                 }`}
               >

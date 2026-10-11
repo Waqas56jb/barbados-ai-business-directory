@@ -12,12 +12,12 @@ export function AnnouncementBar() {
 
   return (
     <div className="bg-ocean text-sand">
-      <div className="container-shell section-padding flex items-center justify-between gap-4 py-2 text-sm">
-        <p className="text-center sm:text-left">{siteConfig.announcement}</p>
+      <div className="container-shell section-padding flex items-center justify-between gap-3 py-2 text-sm">
+        <p className="min-w-0 flex-1 text-left leading-snug sm:text-center lg:text-left">{siteConfig.announcement}</p>
         <button
           type="button"
           aria-label="Dismiss announcement"
-          className="rounded-full p-1 hover:bg-white/10"
+          className="shrink-0 rounded-full p-1 hover:bg-white/10"
           onClick={() => {
             writeStorage(storageKeys.announcementDismissed, true)
             setDismissed(true)

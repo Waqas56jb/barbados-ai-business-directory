@@ -62,7 +62,7 @@ export function ImageGallery({ images, altBase }: ImageGalleryProps) {
           <div className="relative z-10 w-full max-w-5xl">
             <button
               type="button"
-              className="absolute -top-10 right-0 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+              className="absolute top-3 right-3 z-20 rounded-full bg-ocean/80 p-2 text-white hover:bg-ocean sm:top-4 sm:right-4"
               aria-label="Close lightbox"
               onClick={() => setLightboxOpen(false)}
             >
@@ -71,7 +71,7 @@ export function ImageGallery({ images, altBase }: ImageGalleryProps) {
             <SafeImage
               src={gallery[active]}
               alt={`${altBase} enlarged image`}
-              className="max-h-[80vh] w-full rounded-3xl object-contain"
+              className="max-h-[85dvh] w-full rounded-3xl object-contain"
             />
           </div>
         </div>

@@ -49,17 +49,17 @@ export function TopHeader({ onMenuOpen }: { onMenuOpen: () => void }) {
           </button>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-ocean sm:text-base">{title}</p>
-            <p className="truncate text-xs text-muted">Demo dashboard · fictional tourism data</p>
+            <p className="hidden truncate text-xs text-muted sm:block">Demo dashboard · fictional tourism data</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 flex-wrap items-center justify-end gap-1.5 sm:gap-2">
           <label className="relative hidden md:block">
             <span className="sr-only">Search dashboard</span>
             <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted" />
             <input
               placeholder="Search businesses…"
-              className="w-56 rounded-xl border border-border bg-white py-2 pr-3 pl-9 text-sm outline-none focus:border-turquoise"
+              className="w-44 rounded-xl border border-border bg-white py-2 pr-3 pl-9 text-sm outline-none focus:border-turquoise lg:w-56"
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
                   const value = (event.target as HTMLInputElement).value
@@ -74,7 +74,7 @@ export function TopHeader({ onMenuOpen }: { onMenuOpen: () => void }) {
             <Select
               value={activeBusinessId}
               onChange={(event) => setActiveBusiness(event.target.value)}
-              className="min-w-[180px]"
+              className="min-w-[140px] max-w-[180px] lg:min-w-[180px]"
             >
               {businesses.map((business) => (
                 <option key={business.id} value={business.id}>

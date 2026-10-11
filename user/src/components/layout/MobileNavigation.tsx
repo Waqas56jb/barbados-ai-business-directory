@@ -17,7 +17,7 @@ export function MobileNavigation({ open, onClose }: MobileNavigationProps) {
   return (
     <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <button type="button" className="absolute inset-0 bg-ocean/50" aria-label="Close menu overlay" onClick={onClose} />
-      <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-ivory shadow-soft">
+      <div className="absolute inset-y-0 right-0 flex w-full max-w-[min(24rem,100vw)] flex-col bg-ivory pb-[env(safe-area-inset-bottom)] shadow-soft">
         <div className="flex items-center justify-between border-b border-ocean/10 px-5 py-4">
           <p className="font-display text-xl text-ocean">{siteConfig.brandName}</p>
           <button type="button" aria-label="Close menu" onClick={onClose} className="rounded-full p-2 hover:bg-sand">

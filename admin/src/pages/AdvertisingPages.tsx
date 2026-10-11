@@ -77,47 +77,73 @@ export function AdvertisingListPage() {
       {filtered.length === 0 ? (
         <EmptyState title="No campaigns match" />
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-border bg-white">
-          <table className="min-w-full text-left text-sm">
-            <thead className="bg-sand/60 text-xs tracking-wide text-muted uppercase">
-              <tr>
-                <th className="px-4 py-3">Campaign</th>
-                <th className="px-4 py-3">Business</th>
-                <th className="px-4 py-3">Owner</th>
-                <th className="px-4 py-3">Placement</th>
-                <th className="px-4 py-3">Dates</th>
-                <th className="px-4 py-3">Budget</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((promo) => {
-                const business = businesses.find((b) => b.id === promo.businessId)
-                const owner = owners.find((o) => o.id === promo.ownerId)
-                return (
-                  <tr key={promo.id} className="border-t border-border">
-                    <td className="px-4 py-3">
-                      <p className="font-medium">{promo.name}</p>
+        <>
+          <div className="hidden overflow-x-auto rounded-2xl border border-border bg-white lg:block">
+            <table className="min-w-full text-left text-sm">
+              <thead className="bg-sand/60 text-xs tracking-wide text-muted uppercase">
+                <tr>
+                  <th className="px-4 py-3">Campaign</th>
+                  <th className="px-4 py-3">Business</th>
+                  <th className="px-4 py-3">Owner</th>
+                  <th className="px-4 py-3">Placement</th>
+                  <th className="px-4 py-3">Dates</th>
+                  <th className="px-4 py-3">Budget</th>
+                  <th className="px-4 py-3">Status</th>
+                  <th className="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((promo) => {
+                  const business = businesses.find((b) => b.id === promo.businessId)
+                  const owner = owners.find((o) => o.id === promo.ownerId)
+                  return (
+                    <tr key={promo.id} className="border-t border-border">
+                      <td className="px-4 py-3">
+                        <p className="font-medium">{promo.name}</p>
+                        <span className="mt-1 inline-flex rounded-full bg-coral/15 px-2 py-0.5 text-[11px] font-semibold text-coral">
+                          {settings.sponsoredLabel}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">{business?.name}</td>
+                      <td className="px-4 py-3">{owner?.name}</td>
+                      <td className="px-4 py-3">{statusLabel(promo.placement)}</td>
+                      <td className="px-4 py-3">{formatDate(promo.startDate)} – {formatDate(promo.endDate)}</td>
+                      <td className="px-4 py-3">{formatCurrency(promo.budget)}</td>
+                      <td className="px-4 py-3"><StatusBadge status={promo.status} /></td>
+                      <td className="px-4 py-3">
+                        <Link to={`/advertising/${promo.id}`} className="text-turquoise hover:underline">Review</Link>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-3 lg:hidden">
+            {filtered.map((promo) => {
+              const business = businesses.find((b) => b.id === promo.businessId)
+              return (
+                <Card key={promo.id} className="p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <p className="font-medium text-ocean">{promo.name}</p>
                       <span className="mt-1 inline-flex rounded-full bg-coral/15 px-2 py-0.5 text-[11px] font-semibold text-coral">
                         {settings.sponsoredLabel}
                       </span>
-                    </td>
-                    <td className="px-4 py-3">{business?.name}</td>
-                    <td className="px-4 py-3">{owner?.name}</td>
-                    <td className="px-4 py-3">{statusLabel(promo.placement)}</td>
-                    <td className="px-4 py-3">{formatDate(promo.startDate)} – {formatDate(promo.endDate)}</td>
-                    <td className="px-4 py-3">{formatCurrency(promo.budget)}</td>
-                    <td className="px-4 py-3"><StatusBadge status={promo.status} /></td>
-                    <td className="px-4 py-3">
-                      <Link to={`/advertising/${promo.id}`} className="text-turquoise hover:underline">Review</Link>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
+                    </div>
+                    <StatusBadge status={promo.status} />
+                  </div>
+                  <p className="mt-2 text-xs text-muted">
+                    {business?.name} · {statusLabel(promo.placement)}
+                  </p>
+                  <Link to={`/advertising/${promo.id}`} className="mt-3 inline-block text-sm text-turquoise">
+                    Review campaign
+                  </Link>
+                </Card>
+              )
+            })}
+          </div>
+        </>
       )}
     </div>
   )

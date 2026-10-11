@@ -35,7 +35,7 @@ export function AdvertisingPage() {
 
       <Card className="mt-6">
         <CardHeader title="Promotion requests" description="Demo campaign statuses only." />
-        <div className="overflow-x-auto">
+        <div className="hidden overflow-x-auto md:block">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-sand/50 text-xs uppercase tracking-wide text-muted">
               <tr>
@@ -72,6 +72,27 @@ export function AdvertisingPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="space-y-3 p-3 md:hidden">
+          {promotions.map((promo) => (
+            <Link
+              key={promo.id}
+              to={`/advertising/${promo.id}`}
+              className="block rounded-xl border border-border p-3"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <p className="font-medium text-ocean">{promo.name}</p>
+                <StatusBadge status={promo.status} />
+              </div>
+              <p className="mt-1 text-xs text-muted">
+                {businesses.find((item) => item.id === promo.businessId)?.name ?? '—'} ·{' '}
+                {placementTypes.find((item) => item.id === promo.placement)?.name ?? promo.placement}
+              </p>
+              <p className="mt-1 text-xs text-muted">
+                {formatDate(promo.startDate)} – {formatDate(promo.endDate)} · {formatCurrency(promo.budget)}
+              </p>
+            </Link>
+          ))}
         </div>
       </Card>
     </div>
