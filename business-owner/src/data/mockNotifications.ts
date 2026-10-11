@@ -1,0 +1,92 @@
+import type { ActivityItem, NotificationItem } from '@/types'
+
+export const mockNotifications: NotificationItem[] = [
+  {
+    id: 'ntf-001',
+    type: 'new_inquiry',
+    title: 'New inquiry received',
+    message: 'Jordan Blake asked about family cruise availability for Coral Breeze.',
+    read: false,
+    createdAt: '2026-10-10T09:16:00.000Z',
+    href: '/inquiries',
+  },
+  {
+    id: 'ntf-002',
+    type: 'promotion_reviewed',
+    title: 'Promotion request reviewed',
+    message: 'Holetown Dining Spotlight remains pending review in this demo.',
+    read: false,
+    createdAt: '2026-10-09T12:00:00.000Z',
+    href: '/advertising',
+  },
+  {
+    id: 'ntf-003',
+    type: 'listing_approved',
+    title: 'Listing approved',
+    message: 'Coral Breeze Catamaran Tours is marked published in the demo dataset.',
+    read: true,
+    createdAt: '2026-08-15T12:05:00.000Z',
+    href: '/listings',
+  },
+  {
+    id: 'ntf-004',
+    type: 'profile_incomplete',
+    title: 'Business profile incomplete',
+    message: 'Island Link Transfers is at 64% completion. Add more gallery and service detail.',
+    read: false,
+    createdAt: '2026-10-07T17:00:00.000Z',
+    href: '/businesses/biz-003/edit',
+  },
+  {
+    id: 'ntf-005',
+    type: 'ai_knowledge_updated',
+    title: 'AI knowledge information updated',
+    message: 'FAQ changes for Coral Breeze are reflected in the demo knowledge preview.',
+    read: true,
+    createdAt: '2026-09-22T12:05:00.000Z',
+    href: '/ai-knowledge',
+  },
+]
+
+export const mockActivity: ActivityItem[] = [
+  {
+    id: 'act-001',
+    businessId: 'biz-002',
+    title: 'Listing submitted for review',
+    description: 'Ocean Pearl Beach Lounge was submitted for demo moderation review.',
+    createdAt: '2026-10-09T11:10:00.000Z',
+    type: 'listing',
+  },
+  {
+    id: 'act-002',
+    businessId: 'biz-001',
+    title: 'Promotion request created',
+    description: 'Autumn Coastal Featured Push is active in the demo advertising dataset.',
+    createdAt: '2026-09-25T10:00:00.000Z',
+    type: 'promotion',
+  },
+  {
+    id: 'act-003',
+    businessId: 'biz-001',
+    title: 'Photo added',
+    description: 'A swim-stop gallery image was added to Coral Breeze.',
+    createdAt: '2026-10-08T14:20:00.000Z',
+    type: 'media',
+  },
+  {
+    id: 'act-004',
+    businessId: 'biz-001',
+    title: 'Business profile updated',
+    description: 'Contact and amenities details were refreshed for Coral Breeze.',
+    createdAt: '2026-10-08T13:50:00.000Z',
+    type: 'profile',
+  },
+  {
+    id: 'act-005',
+    businessId: 'biz-001',
+    title: 'Listing approved in demo data',
+    description: 'Coral Breeze is marked published for directory preview purposes.',
+    createdAt: '2026-08-15T12:05:00.000Z',
+    type: 'system',
+  },
+]

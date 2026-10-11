@@ -1,0 +1,58 @@
+import type { Administrator } from '@/types'
+
+export const mockAdministrators: Administrator[] = [
+  {
+    id: 'adm-001',
+    name: 'Alex Rivera',
+    email: 'admin@barbadosexplorer.demo',
+    role: 'super_admin',
+    status: 'active',
+    createdAt: '2026-05-01T10:00:00.000Z',
+    lastActivityAt: '2026-10-11T08:00:00.000Z',
+  },
+  {
+    id: 'adm-002',
+    name: 'Jordan Blake',
+    email: 'moderator@barbadosexplorer.demo',
+    role: 'listing_moderator',
+    status: 'active',
+    createdAt: '2026-06-10T10:00:00.000Z',
+    lastActivityAt: '2026-10-10T16:00:00.000Z',
+  },
+  {
+    id: 'adm-003',
+    name: 'Priya Shah',
+    email: 'ads@barbadosexplorer.demo',
+    role: 'advertising_manager',
+    status: 'active',
+    createdAt: '2026-07-01T10:00:00.000Z',
+    lastActivityAt: '2026-10-09T14:00:00.000Z',
+  },
+  {
+    id: 'adm-004',
+    name: 'Sam Okonkwo',
+    email: 'ai@barbadosexplorer.demo',
+    role: 'ai_manager',
+    status: 'active',
+    createdAt: '2026-07-15T10:00:00.000Z',
+    lastActivityAt: '2026-10-10T11:00:00.000Z',
+  },
+  {
+    id: 'adm-005',
+    name: 'Riley Chen',
+    email: 'support@barbadosexplorer.demo',
+    role: 'support_agent',
+    status: 'active',
+    createdAt: '2026-08-01T10:00:00.000Z',
+    lastActivityAt: '2026-10-08T09:30:00.000Z',
+  },
+  {
+    id: 'adm-006',
+    name: 'Taylor Brooks',
+    email: 'analytics@barbadosexplorer.demo',
+    role: 'analytics_viewer',
+    status: 'active',
+    createdAt: '2026-08-20T10:00:00.000Z',
+    lastActivityAt: '2026-10-07T13:00:00.000Z',
+  },
+]

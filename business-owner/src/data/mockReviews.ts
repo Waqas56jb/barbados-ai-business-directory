@@ -1,0 +1,46 @@
+import type { Review } from '@/types'
+
+export const mockReviews: Review[] = [
+  {
+    id: 'rev-001',
+    businessId: 'biz-001',
+    visitorName: 'Priya N.',
+    rating: 5,
+    title: 'Beautiful coastal morning',
+    body: 'Demo review: the fictional cruise description felt clear and family-friendly. Great sample listing detail.',
+    createdAt: '2026-09-28T14:00:00.000Z',
+    status: 'published',
+    ownerReply: 'Thank you for the kind demo feedback!',
+    ownerRepliedAt: '2026-09-29T10:00:00.000Z',
+  },
+  {
+    id: 'rev-002',
+    businessId: 'biz-001',
+    visitorName: 'Ethan R.',
+    rating: 4,
+    title: 'Smooth sail experience',
+    body: 'Demo review highlighting swim stops and guided commentary from the sample profile.',
+    createdAt: '2026-10-02T16:20:00.000Z',
+    status: 'published',
+  },
+  {
+    id: 'rev-003',
+    businessId: 'biz-002',
+    visitorName: 'Lucia M.',
+    rating: 5,
+    title: 'Perfect sunset lounge',
+    body: 'Demo review for coastal dining atmosphere and west-coast seating.',
+    createdAt: '2026-10-05T19:10:00.000Z',
+    status: 'published',
+  },
+  {
+    id: 'rev-004',
+    businessId: 'biz-003',
+    visitorName: 'Noah S.',
+    rating: 3,
+    title: 'Transfer timing question',
+    body: 'Demo review noting interest in clearer late-night airport pickup details.',
+    createdAt: '2026-10-06T08:45:00.000Z',
+    status: 'published',
+  },
+]
